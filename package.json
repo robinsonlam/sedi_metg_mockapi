@@ -1,0 +1,19 @@
+{
+  "name": "sedi-metg-mockapi",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "tsx ./bin/www"
+  },
+  "type": "module",
+  "dependencies": {
+    "@types/express": "^5.0.3",
+    "express": "^5.1.0",
+    "mongodb": "^6.17.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.4",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}
