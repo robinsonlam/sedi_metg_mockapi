@@ -1,9 +1,15 @@
 import express from 'express';
+import basicAuth from 'express-basic-auth';
 
 import ordersRouter from './routes/orders.js';
 
 const app = express();
 app.use(express.json());
+
+app.use(basicAuth({
+  users: { 'admin': 'password' },
+}))
+
 
 app.use('/orders', ordersRouter);
 
