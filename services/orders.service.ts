@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { GetOrdersQuery } from "../types/orders.types";
 import { connect } from "./db.service";
 
@@ -39,5 +40,32 @@ export async function searchOrders({
 
   return {
     data,
+  };
+}
+
+export async function createOrder(orderData: any) {
+  // * Connect to the database
+  const db = await connect();
+
+  // * Insert the order into the database
+  const result = await db.collection("orders").insertOne(orderData);
+
+  return {
+    success: true,
+    orderId: result.insertedId,
+  };
+}
+
+export async function updateOrder(orderId: string, orderData: any) {
+  // * Connect to the database
+  const db = await connect();
+
+  // * Update the order in the database
+  const result = await db
+    .collection("orders")
+    .updateOne({ _id: new ObjectId(orderId) }, { $set: orderData });
+
+  return {
+    success: result.modifiedCount > 0,
   };
 }

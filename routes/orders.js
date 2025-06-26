@@ -7,9 +7,9 @@ const router = express.Router();
 router.get("/", ordersController.get);
 
 // * POST /orders (create a new order)
-// router.post("/", ordersController.post);
+router.post("/", ordersController.post);
 
 // * PUT /orders/:id (update an order)
-// router.put("/:id", ordersController.put);
+router.put("/:id", ordersController.put);
 
 export default router;
